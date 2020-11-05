@@ -3,3 +3,4 @@
 Team members 
 * Joseph Graham
 * Dara Lewis
+* Jared Pond
