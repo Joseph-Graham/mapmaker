@@ -8,7 +8,7 @@ Team members
 * Project Manager: Joseph Graham
 * Dara Lewis
 * Quality Control: Jared Pond
-*
+* Sydney Rowell
 *
 *
 
