@@ -1,6 +1,10 @@
-##Team 1
+## Team 1
 
+## Credits
 Team members 
 * Joseph Graham
 * Dara Lewis
 * Jared Pond
+*
+*
+*
