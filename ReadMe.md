@@ -9,7 +9,7 @@ Team members
 * Dara Lewis
 * Quality Control: Jared Pond
 * Sydney Rowell
-*
+* Daniel Tanner Lyons
 *
 
 ## Features
