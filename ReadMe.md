@@ -10,7 +10,6 @@ Team members
 * Quality Control: Jared Pond
 * Sydney Rowell
 * Daniel Tanner Lyons
-*
 
 ## Features
 
