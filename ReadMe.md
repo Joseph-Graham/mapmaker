@@ -17,9 +17,9 @@ Team members
 
 ## Latest Changes
 
-*Fixed all the branches
-*Updated the readme
-*Added a concept image of what the final product could look like to the readme
+* Fixed all the branches
+* Updated the readme
+* Added a concept image of what the final product could look like to the readme
 
 ## Concept image
 
