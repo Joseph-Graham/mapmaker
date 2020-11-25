@@ -13,20 +13,14 @@ Team members
 
 ## Features
 
-* Added the ReadMe.md file.
-* Committed names to the ReadMe.md file.
-* Cleaned up files
-* Fixed src folder and created a working jDeveloper project
-* Updated the ReadMe.md file
+* None
 
-## Proposed enhancements Objectives and Goals
+## Latest Changes
 
-* Add images to replace the squares 
-* Discover exact purpose of map to better develop a plan
-* Add a background image
-* Compile list of important parts of the existing code to base future work off of
-* Add comments to the code to increase readability
+*Fixed all the branches
+*Updated the readme
+*Added a concept image of what the final product could look like to the readme
 
-* Make the project visually appealing
-* Make the program user friendly
-* Add a user interface
+## Concept image
+
+![Concept-Adv-Java-programing.png](https://postimg.cc/v16yQ5pf)
