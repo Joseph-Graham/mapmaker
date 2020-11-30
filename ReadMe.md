@@ -7,19 +7,19 @@ IDE: JDeveloper
 Team members 
 * Project Manager: Joseph Graham
 * Dara Lewis
-* Quality Control: Jared Pond
+* Quality Control: Daniel Tanner Lyons
 * Sydney Rowell
-* Daniel Tanner Lyons
 
 ## Features
 
-* None
+* Work in progress
 
 ## Latest Changes
 
 * Fixed all the branches
 * Updated the readme
 * Added a concept image of what the final product could look like to the readme
+* Restructured team
 
 ## Concept image
 
