@@ -30,13 +30,18 @@ Here are a few of the Goals we went over tonight.
 Please feel free to add any more!
 Goals
 •	Ability to create grid of squares of defined maximum size
+
     o	i.e. 5x5, 10x10, etc.
+
 •	Option of being able to connect rooms
+
 •	Should be a way (using mouse) to do tasks at hand
     o	Possibly hot keys (primarily mouse controlled)
+
 •	Click on grid and that action would create room
     o	Right click gives you different attributes you can assign to room
         	i.e. temps, obstacles in room
     o	Retain functionality of save and load maps
+
 •	Map files that are saved as Json
     o	Possible idea
