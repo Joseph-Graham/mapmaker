@@ -28,7 +28,11 @@ Team members
 
 Here are a few of the Goals we went over tonight.
 Please feel free to add any more!
+
+
 Goals
+
+
 •	Ability to create grid of squares of defined maximum size
 
     o	i.e. 5x5, 10x10, etc.
