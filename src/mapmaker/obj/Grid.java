@@ -1,37 +1,31 @@
 package mapmaker.obj;
 
 public class Grid {
-    public final int GRID_SCALE = 10;
-    public int Length, Width;
-    public int cellDimensions;
+    //private final int GRID_SCALE = 10;
+    private int unitsY, unitsX;
 
     public Grid(){
-        Length = 10;
-        Width = 20;
-        cellDimensions = 100;
+        unitsY = 10;
+        unitsX = 10;
     }
 
-    public Grid(int Length, int Width, int cellDimensions){
-        this.Length = Length;
-        this.Width = Width;
-        this.cellDimensions = cellDimensions;
+    public Grid(int Length, int Width){
+        this.unitsY = Length;
+        this.unitsX = Width;
+
     }
-    public int getLength(){
-        return Length;
+    public int getUnitsY(){
+        return unitsY;
     }
-    public int getWidth(){
-        return Width;
+    public int getUnitsX(){
+        return unitsX;
     }
-    public int getCellDimensions(){
-        return cellDimensions;
+
+    public void setUnitsY(int newLength) {
+        this.unitsY = newLength;
     }
-    public void setLength(int newLength) {
-        this.Length = newLength;
+    public void setUnitsX(int newWidth){
+        this.unitsX = newWidth;
     }
-    public void setWidth(int newWidth){
-        this.Width = newWidth;
-    }
-    public void setCellDimensions(int newCellDimensions){
-        this.cellDimensions = newCellDimensions;
-    }
+
 }

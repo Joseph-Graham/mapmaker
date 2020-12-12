@@ -2,16 +2,26 @@ package mapmaker.obj;
 
 import javafx.scene.paint.Color;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Room {
-    public int x, y;
-    public String desc;
-    public String flag;
-    public String[] attributes;
-    public Color color;
+    private int x, y;
+    private String desc;
+    private String flag;
+    private ArrayList<String> attributes;
+    private Color color;
+
     public Room(int x, int y){
         this.x = x;
         this.y = y;
+        this.desc = "";
         this.flag = "#ROOM";
+        this.attributes = new ArrayList<>();
+        attributes.add("Fiery");
+        attributes.add("Dark");
+        attributes.add("Shitty");
+        attributes.add("Scary");
         this.color = Color.BLACK;
     }
     public Room(int x, int y, String flag, Color color){
@@ -29,12 +39,20 @@ public class Room {
         return y;
     }
 
+    public String getFlag(){
+        return flag;
+    }
+
     public String getDesc() {
         return desc;
     }
 
     public String getAttributeAt(int index) {
-        return attributes[index];
+        return attributes.get(index);
+    }
+
+    public ArrayList<String> getAttributes(){
+        return attributes;
     }
 
     public Color getColor() {
@@ -54,7 +72,7 @@ public class Room {
     }
 
     public void setAttributeAt(int index, String attribute) {
-        this.attributes[index] = attribute;
+        this.attributes.set(index, attribute);
     }
 
     public void setColor(Color color) {
