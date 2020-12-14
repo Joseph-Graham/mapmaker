@@ -1,7 +1,5 @@
 package mapmaker.obj;
 
-import mapmaker.util.CheckMapData;
-
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -12,17 +10,17 @@ public class Map {
     private ArrayList<Link> CurrentLinks;
     private Grid grid;
 
-    public Map(Grid grid){
+    public Map(){
         this.mapName = "New Map";
-        this.grid = grid;
+        this.grid = new Grid();
         this.CurrentRooms = new ArrayList<>();
         this.CurrentLinks = new ArrayList<>();
     }
-    public Map(Grid grid, String name){
+    public Map(String name, Grid grid, ArrayList<Room> rooms, ArrayList<Link> link){
         this.mapName = name;
         this.grid = grid;
-        this.CurrentRooms = new ArrayList<>();
-        this.CurrentLinks = new ArrayList<>();
+        this.CurrentRooms = rooms;
+        this.CurrentLinks = link;
     }
     public ArrayList<Room> getCurrentRooms(){
         return CurrentRooms;
@@ -46,24 +44,24 @@ public class Map {
     public String getMapName(){
         return mapName;
     }
-    /*public Room getRoomAt(int x, int y) {
-        for (int i = 0; i < CurrentRooms.size(); i++) {
-            if ((CurrentRooms.get(i).getX() == x) && (CurrentRooms.get(i).getY() == y)) {
-                return CurrentRooms.get(i);
-            }
+    public Room getRoomAt(int x, int y) {
+        for (Room i : CurrentRooms) {
+            if((i.getX() == x)&&(i.getY() == y))
+                return i;
         }
-    }*/
+        return null;
+    }
 
     public void addLink(Link newLink){
         CurrentLinks.add(newLink);
-        System.out.println("Added new link:");
-        System.out.println("Room one at: " + newLink.getRoomOneX() + "," + newLink.getRoomOneY());
-        System.out.println("Linked at: " + newLink.getRoomOneDirection());
-        System.out.println("Room two at: " + newLink.getRoomTwoX() + "," + newLink.getRoomTwoY());
-        System.out.println("Linked at: " + newLink.getRoomTwoDirection());
+      //  System.out.println("Added new link:");
+      //  System.out.println("Room one at: " + newLink.getRoomOneX() + "," + newLink.getRoomOneY());
+      //  System.out.println("Linked at: " + newLink.getRoomOneDirection());
+      //  System.out.println("Room two at: " + newLink.getRoomTwoX() + "," + newLink.getRoomTwoY());
+      //  System.out.println("Linked at: " + newLink.getRoomTwoDirection());
     }
     public void deleteSpecificLink(int x, int y, int direction){
-        System.out.println(CurrentLinks.size() + " links currently on map");
+      //  System.out.println(CurrentLinks.size() + " links currently on map");
         for(Link i : CurrentLinks){
             if((x == i.getRoomOneX() && y == i.getRoomOneY() && direction == i.getRoomOneDirection())
                 || (x == i.getRoomTwoX() && y == i.getRoomTwoY() && direction == i.getRoomTwoDirection())){
@@ -72,7 +70,7 @@ public class Map {
         }
     }
     public void deleteAllLinksForRoom(int x, int y){
-        System.out.println(CurrentLinks.size() + " links currently on map");
+        //System.out.println(CurrentLinks.size() + " links currently on map");
         ArrayList<Link> linksToRemove = new ArrayList<>();
         for(Link i : CurrentLinks){
             if((x == i.getRoomOneX() && y == i.getRoomOneY())||(x == i.getRoomTwoX() && y == i.getRoomTwoY())){
@@ -80,6 +78,9 @@ public class Map {
             }
         }
         CurrentLinks.removeAll(linksToRemove);
+    }
+    public Grid getGrid(){
+        return grid;
     }
 
 }

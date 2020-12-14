@@ -8,12 +8,11 @@ public class Grid {
         unitsY = 10;
         unitsX = 10;
     }
-
-    public Grid(int Length, int Width){
-        this.unitsY = Length;
-        this.unitsX = Width;
-
+    public Grid(int x, int y){
+        this.unitsX = x;
+        this.unitsY = y;
     }
+
     public int getUnitsY(){
         return unitsY;
     }

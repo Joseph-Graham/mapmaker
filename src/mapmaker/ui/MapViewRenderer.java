@@ -6,6 +6,7 @@ import javafx.scene.paint.Color;
 import java.util.ArrayList;
 import mapmaker.obj.Link;
 import mapmaker.obj.Map;
+import mapmaker.obj.Room;
 
 public class MapViewRenderer {
 
@@ -25,40 +26,38 @@ public class MapViewRenderer {
     private int roomWidth;
     private int roomHeight;
 
-    public MapViewRenderer(
-                MapViewParams params,
-                GraphicsContext roomsLayer,
-                GraphicsContext linksLayer,
-                GraphicsContext exitMarkerLayer,
-                GraphicsContext feedBackLayer,
-               GraphicsContext specialFeedbackLayer,
-               GraphicsContext gridLayer,
-               GraphicsContext background,
-               Map map){
+    public MapViewRenderer(MapViewParams params, Map map, MapView mapView){
+        //procedurally draws to the various GraphicsContexts
+        //when called from MapViewController
+        //to render the current map view
+        //methods take grid coordinates (as opposed to pixel coordinates) and calculate the pixel coordinates where needed
         this.map = map;
         this.params = params;
-        this.roomsLayer = roomsLayer;
-        this.linksLayer = linksLayer;
-        this.exitMarkerLayer = exitMarkerLayer;
-        this.highlightLayer = feedBackLayer;
-        this.specialHighlightLayer = specialFeedbackLayer;
-        this.gridLayer = gridLayer;
-        this.background = background;
+        this.roomsLayer = mapView.getRoomsLayer();
+        this.linksLayer = mapView.getLinksLayer();
+        this.exitMarkerLayer = mapView.getExitMarkerLayer();
+        this.highlightLayer = mapView.getHighlightLayer();
+        this.specialHighlightLayer = mapView.getSpecialHighlightLayer();
+        this.gridLayer = mapView.getGridLayer();
+        this.background = mapView.getBackground();
 
-        this.totalCanvasX = params.getTotalCanvasX();
-        this.totalCanvasY = params.getTotalCanvasY();
+        this.totalCanvasX = params.getTotalMapViewX();
+        this.totalCanvasY = params.getTotalMapViewY();
         this.cellSize = params.getCellDimensions();
         this.paddingOffset = params.getPaddingOffset();
         this.roomWidth = params.getRoomWidth();
         this.roomHeight = params.getRoomHeight();
+        drawGrid();
         drawBackground();
     }
-    public void drawBackground(){
+    public void drawBackground(){ //paints the background layer
         background.setFill(Color.WHITESMOKE);
         background.setGlobalAlpha(0.8);
         background.fillRect(0,0, totalCanvasX, totalCanvasY);
     }
-    public void highlightRoom(int X, int Y){
+    public void highlightRoom(int X, int Y){ //highlights the room selected
+        highlightLayer.setStroke(Color.BLACK);
+        highlightLayer.setLineWidth(2);
         int pixelsX = X*cellSize;
         int pixelsY = Y*cellSize;
         highlightLayer.setGlobalAlpha(0.5);
@@ -66,7 +65,7 @@ public class MapViewRenderer {
         clearHighlights();
         highlightLayer.fillRect(pixelsX, pixelsY, cellSize, cellSize);
     }
-    public void toggleHighlightRoom(int X, int Y){
+    public void toggleHighlightRoom(int X, int Y){ //toggles the highlight on the currently selected after entering link exit selection mode
         int pixelsX = X*cellSize;
         int pixelsY = Y*cellSize;
         specialHighlightLayer.setFill(Color.LIGHTGREEN);
@@ -75,7 +74,7 @@ public class MapViewRenderer {
     public void clearHighlights(){
         highlightLayer.clearRect(0, 0, totalCanvasX, totalCanvasY);
     }
-    public void highlightRoomHovered(int X, int Y){
+    public void highlightRoomHovered(int X, int Y){ //given the grid X and Y, highlights the room the user is hovering the mouse over when in link selection mode
         int pixelsX = X*cellSize;
         int pixelsY = Y*cellSize;
         specialHighlightLayer.setFill(Color.LIGHTGREEN);
@@ -85,13 +84,28 @@ public class MapViewRenderer {
     public void clearHoverHighlights(){
         specialHighlightLayer.clearRect(0,0, totalCanvasX, totalCanvasY);
     }
-    public void drawRoom(int X, int Y){
+    public void drawRooms(){
+        roomsLayer.clearRect(0,0, totalCanvasX, totalCanvasY);
+        roomsLayer.setStroke(Color.BLACK);
+        roomsLayer.setLineWidth(2);
+        for(Room i : map.getCurrentRooms()){
+            int pixelsX = i.getX()*cellSize;
+            int pixelsY = i.getY()*cellSize;
+            roomsLayer.setFill(i.getColor());
+            roomsLayer.strokeRect(pixelsX + paddingOffset, pixelsY + paddingOffset, roomWidth, roomHeight);
+            roomsLayer.fillRect(pixelsX + paddingOffset + 1, pixelsY + paddingOffset + 1, roomWidth - 2, roomHeight - 2);
+        }
+    }
+  /*  public void drawRoom(int X, int Y){
+        roomsLayer.setFill(Color.BLACK);
+        roomsLayer.setStroke(Color.BLACK);
+        roomsLayer.setLineWidth(2);
         int pixelsX = X*cellSize;
         int pixelsY = Y*cellSize;
         roomsLayer.setFill(Color.WHITE);
         roomsLayer.strokeRect(pixelsX + paddingOffset, pixelsY + paddingOffset, roomWidth, roomHeight);
         roomsLayer.fillRect(pixelsX + paddingOffset + 1, pixelsY + paddingOffset + 1, roomWidth - 2, roomHeight - 2);
-    }
+    }*/
     public void drawExitMarkersDisplay(int X, int Y){
         //draws the exit markers display to the normal highlight layer for the selected room for any unlinked exits
         //given the X in Y grid coordinates of the room
@@ -110,6 +124,9 @@ public class MapViewRenderer {
     public void drawExitMarkersDisplayAtHover(int X, int Y){
         //draws the exit markers to the special highlight layer when in link selection mode for any unlinked exits
         //given the X in Y grid coordinates of the room
+        specialHighlightLayer.setStroke(Color.BLACK);
+        specialHighlightLayer.setGlobalAlpha(0.5);
+        specialHighlightLayer.setLineWidth(2);
         int marker = params.getExitMarkerSize();
         specialHighlightLayer.strokeOval(params.get_NW_ExitX(X), params.get_NW_ExitY(Y), marker, marker); //nw, 1
         specialHighlightLayer.strokeOval(params.get_N_ExitX(X), params.get_N_ExitY(Y), marker, marker); //n. 2
@@ -195,6 +212,9 @@ public class MapViewRenderer {
         exitMarkerLayer.clearRect(0,0, totalCanvasX, totalCanvasY);
     }
     public void fillExistingExitMarkers(){
+        exitMarkerLayer.setFill(Color.BLACK);
+        exitMarkerLayer.setStroke(Color.BLACK);
+        exitMarkerLayer.setLineWidth(2);
         for(Link i : map.getCurrentLinks()) {
             int marker = params.getExitMarkerSize();
             int direction1 = i.getRoomOneDirection();
@@ -271,10 +291,16 @@ public class MapViewRenderer {
             currentCanvasY += cellSize;
         }
     }
+    public void clearGrid(){
+        gridLayer.clearRect(0,0, totalCanvasX, totalCanvasY);
+    }
     public void clearLinks(){
         linksLayer.clearRect(0,0, totalCanvasX, totalCanvasY);
     }
     public void drawLinks(){
+        linksLayer.setFill(Color.BLACK);
+        linksLayer.setStroke(Color.BLACK);
+        linksLayer.setLineWidth(2);
         ArrayList<Link> allLinks = map.getCurrentLinks();
         for(Link i : allLinks){
             int direction1 = i.getRoomOneDirection();

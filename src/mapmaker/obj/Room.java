@@ -18,15 +18,13 @@ public class Room {
         this.desc = "";
         this.flag = "#ROOM";
         this.attributes = new ArrayList<>();
-        attributes.add("Fiery");
-        attributes.add("Dark");
-        attributes.add("Shitty");
-        attributes.add("Scary");
         this.color = Color.BLACK;
     }
-    public Room(int x, int y, String flag, Color color){
+    public Room(int x, int y, ArrayList<String> attributes, String description, String flag, Color color){
         this.x = x;
         this.y = y;
+        this.attributes = attributes;
+        this.desc = description;
         this.flag = flag;
         this.color = color;
     }
@@ -71,8 +69,12 @@ public class Room {
         this.desc = newDesc;
     }
 
-    public void setAttributeAt(int index, String attribute) {
-        this.attributes.set(index, attribute);
+    public void setAttributes(ArrayList<String> newAttributes) {
+        attributes.clear();
+        attributes.addAll(newAttributes);
+    }
+    public void setFlag(String newFlag){
+        this.flag = newFlag;
     }
 
     public void setColor(Color color) {

@@ -1,21 +1,32 @@
 package mapmaker.ui;
 
 
+import mapmaker.obj.Map;
+import mapmaker.obj.Room;
+
 public class MouseLocator {
-    public static int getMouseGridX(double mouseX, int cellSize){
-        int XPos = (int) Math.floor((double) mouseX/cellSize);
+
+    private Map map;
+    private MapViewParams params;
+
+    public MouseLocator(Map map, MapViewParams params){
+        this.params = params;
+        this.map = map;
+
+    }
+    public int getMouseGridX(double mouseX){
+        int XPos = (int) Math.floor((double) mouseX/params.getCellDimensions());
         return XPos;
     }
 
-    public static int getMouseGridY(double mouseY, int cellSize){
-        int YPos = (int) Math.floor((double) mouseY/cellSize);
+    public int getMouseGridY(double mouseY){
+        int YPos = (int) Math.floor((double) mouseY/params.getCellDimensions());
         return YPos;
     }
-    public static int getExitLinkSelected(double mouseX, double mouseY, MapViewParams params){
+    public int getExitLinkSelected(double mouseX, double mouseY){
         int markerSize = params.getExitMarkerSize();
-        int cellDimensions = params.getCellDimensions();
-        int gridX = getMouseGridX(mouseX, cellDimensions);
-        int gridY = getMouseGridY(mouseY, cellDimensions);
+        int gridX = getMouseGridX(mouseX);
+        int gridY = getMouseGridY(mouseY);
         if ((int) Math.floor((double) mouseX/markerSize)==((int) Math.floor((double) params.get_NW_ExitX(gridX)/markerSize))
             &&(int) Math.floor((double) mouseY/markerSize)==((int) Math.floor((double) params.get_NW_ExitY(gridY)/markerSize))){
             return 1;
@@ -60,5 +71,13 @@ public class MouseLocator {
             return 0;
         }
     }
-
+    public boolean roomExistsAtMouseLocation(int x, int y) {
+        for (Room i : map.getCurrentRooms()) {
+            if ((x == i.getX()) && (y == i.getY())) {
+                //System.out.println("Room exists at: " + x + "," + y + " " + i.getX() + "," + i.getY());
+                return true;
+            }
+        }
+        return false;
+    }
 }

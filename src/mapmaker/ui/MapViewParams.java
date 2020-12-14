@@ -1,41 +1,48 @@
 package mapmaker.ui;
 
+import javafx.scene.paint.Color;
 import mapmaker.obj.Grid;
 
 public class MapViewParams {
     public int cellDimensions;
     private int roomHeight;
     private int roomWidth;
-    private int totalCanvasX;
-    private int totalCanvasY;
+    private int totalMapViewX;
+    private int totalMapViewY;
     public int paddingOffset;
     private int exitMarkerSize;
     private int exitMarkerOffset;
     private int exitMarkerSpacing;
     private int gridX;
     private int gridY;
+    private boolean gridOn;
+    private Color defaultRoomColor;
 
     public MapViewParams(Grid grid) {
+        //holds the parameters by which objects are rendered on the map
+        //The rest of the UI elements are contingent on the cell dimensions (the size in pixels of the squares of the grid) to allow for scaling
+        //referenced by MouseLocator to determine if the user has clicked on an existing room
+        //referenced by the MapViewRenderer to determine room size, total size of the map view, exit marker size
         this.cellDimensions = 80;
         this.roomHeight = cellDimensions / 2;
         this.roomWidth = cellDimensions / 2;
         this.gridX = grid.getUnitsX();
         this.gridY = grid.getUnitsY();
-        this.totalCanvasX = gridX*cellDimensions;
-        this.totalCanvasY = gridY*cellDimensions;
+        this.totalMapViewX = gridX*cellDimensions;
+        this.totalMapViewY = gridY*cellDimensions;
         this.paddingOffset = roomWidth/2;
         this.exitMarkerSize = cellDimensions / 10; //exit marker diameter in pixels
         this.exitMarkerOffset = exitMarkerSize / 2; //number of pixels to offset the exit marker so that its centered over the room line
         this.exitMarkerSpacing = (roomWidth / 2); //half room size spacing for N, S, E, W, U, and D exit markers
-
-        //int canvasX = (mouseGridX*cellDimensions) + paddingOffset;
-        //int canvasY = (mouseGridY*cellDimensions) + paddingOffset;
     }
-    public int getTotalCanvasX(){
-        return totalCanvasX;
+    public boolean isGridOn(){
+        return gridOn;
     }
-    public int getTotalCanvasY(){
-        return totalCanvasY;
+    public int getTotalMapViewX(){
+        return totalMapViewX;
+    }
+    public int getTotalMapViewY(){
+        return totalMapViewY;
     }
     public int getCellDimensions(){
         return cellDimensions;

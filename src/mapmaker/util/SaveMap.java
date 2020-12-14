@@ -1,5 +1,6 @@
 package mapmaker.util;
 
+import javafx.scene.control.Alert;
 import mapmaker.obj.Map;
 import mapmaker.obj.Grid;
 import mapmaker.obj.Room;
@@ -7,8 +8,14 @@ import mapmaker.obj.Link;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import java.io.*;
+
 public class SaveMap {
-    public static void saveToJson(Map map, Grid saveGrid){
+    public static void saveToJson(Map map, String path) throws FileNotFoundException {
+
+        //String path = "C:\\personal\\mapmaker\\";
+        //String path = "";
+        Grid saveGrid = map.getGrid();
         JSONObject Map = new JSONObject();
         JSONObject GridData = new JSONObject();
         JSONArray Rooms = new JSONArray();
@@ -42,14 +49,14 @@ public class SaveMap {
 
         for(Link i : map.getCurrentLinks()){
             JSONObject roomOne = new JSONObject();
-            roomOne.put("X Position:", i.getRoomOneX());
-            roomOne.put("Y Position:", i.getRoomOneY());
-            roomOne.put("Direction:", i.getRoomOneDirection());
+            roomOne.put("X Position", i.getRoomOneX());
+            roomOne.put("Y Position", i.getRoomOneY());
+            roomOne.put("Direction", i.getRoomOneDirection());
             roomOne.put("Exit Blocked", i.isRoomOneExitOpen());
             JSONObject roomTwo = new JSONObject();
             roomTwo.put("X Position", i.getRoomTwoX());
             roomTwo.put("Y Position", i.getRoomTwoY());
-            roomTwo.put("Direction:", i.getRoomTwoDirection());
+            roomTwo.put("Direction", i.getRoomTwoDirection());
             roomTwo.put("Exit Blocked", i.isRoomTwoExitOpen());
             JSONObject link = new JSONObject();
             link.put("Room One", roomOne);
@@ -58,7 +65,19 @@ public class SaveMap {
         }
         Map.put("Links", Links);
 
-        System.out.println(Map.toJSONString());
+        //System.out.print(Map.toJSONString());
 
+        String jsonAsString = Map.toString();
+
+        File jsonOut = new File(path + map.getMapName() + ".json");
+        PrintWriter jsonOutWriter = new PrintWriter(jsonOut);
+
+        jsonOutWriter.printf("%s", jsonAsString);
+        jsonOutWriter.close();
+    }
+    public static void throwSaveFileError(){
+        Alert saveError = new Alert(Alert.AlertType.ERROR);
+        saveError.setHeaderText("Error saving map");
+        saveError.setContentText("There was some error in trying to save your map to the disk.");
     }
 }

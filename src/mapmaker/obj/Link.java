@@ -9,8 +9,8 @@ public class Link {
     private int roomTwoY;
     private int roomOneDirection;
     private int roomTwoDirection;
-    private boolean roomOneExitIsOpen;
-    private boolean roomTwoExitIsOpen;
+    private boolean roomOneExitIsBlocked;
+    private boolean roomTwoExitIsBlocked;
 
     public Link(int roomOneX, int roomOneY, int roomTwoX, int roomTwoY, int roomOneDirection, int roomTwoDirection){
         this.roomOneX = roomOneX;
@@ -19,8 +19,18 @@ public class Link {
         this.roomTwoY = roomTwoY;
         this.roomOneDirection = roomOneDirection;
         this.roomTwoDirection = roomTwoDirection;
-        this.roomOneExitIsOpen = true;
-        this.roomTwoExitIsOpen = true;
+        this.roomOneExitIsBlocked = true;
+        this.roomTwoExitIsBlocked = true;
+    }
+    public Link(int roomOneX, int roomOneY, int roomTwoX, int roomTwoY, int roomOneDirection, int roomTwoDirection, boolean roomOneExitIsBlocked, boolean roomTwoExitIsBlocked){
+        this.roomOneX = roomOneX;
+        this.roomOneY = roomOneY;
+        this.roomTwoX = roomTwoX;
+        this.roomTwoY = roomTwoY;
+        this.roomOneDirection = roomOneDirection;
+        this.roomTwoDirection = roomTwoDirection;
+        this.roomOneExitIsBlocked = roomOneExitIsBlocked;
+        this.roomTwoExitIsBlocked = roomTwoExitIsBlocked;
     }
 
     public int getRoomOneDirection(){
@@ -42,10 +52,10 @@ public class Link {
         return roomTwoY;
     }
     public boolean isRoomOneExitOpen(){
-        return roomOneExitIsOpen;
+        return roomOneExitIsBlocked;
     }
     public boolean isRoomTwoExitOpen(){
-        return roomTwoExitIsOpen;
+        return roomTwoExitIsBlocked;
     }
 
 }

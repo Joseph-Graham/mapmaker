@@ -34,6 +34,7 @@ public class MapViewState {
         this.roomIsSelected = true;
         this.selectedX = x;
         this.selectedY = y;
+        System.out.println("You selected the room at " + selectedX + "," + selectedY);
     }
     public int getSelectedX(){
         return selectedX;
@@ -44,7 +45,7 @@ public class MapViewState {
     public void clearRoomSelections(){
         this.roomIsSelected = false;
     }
-    public void firstlinkHasBeenSelected(int roomX, int roomY, int direction){
+    public void firstExitHasBeenSelected(int roomX, int roomY, int direction){
         this.linkRoomOneX = roomX;
         this.linkRoomOneY = roomY;
         this.linkRoomOneDirection = direction;
@@ -54,7 +55,7 @@ public class MapViewState {
     public void clearLinkSelection(){
         this.linkExitSelectionMode = false;
     }
-    public void secondLinkHasBeenSelected(int roomX, int roomY, int direction){
+    public void secondExitHasBeenSelected(int roomX, int roomY, int direction){
         this.linkRoomTwoX = roomX;
         this.linkRoomTwoY = roomY;
         this.linkRoomTwoDirection = direction;
