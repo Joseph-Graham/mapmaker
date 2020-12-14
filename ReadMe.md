@@ -29,6 +29,6 @@ Team members
 
 ## Pictures
 
-![project](./docs/mapmaker1.png)
+![project1](https://raw.githubusercontent.com/Joseph-Graham/mapmaker/dev/doc/mapmaker1.PNG)
 
-![project](./docs/mapmaker2.png)
+![project2](https://raw.githubusercontent.com/Joseph-Graham/mapmaker/dev/doc/mapmaker2.PNG)
