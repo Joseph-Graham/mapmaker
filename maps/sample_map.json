@@ -1,0 +1,127 @@
+{
+    "Grid": {
+        "Height": 10,
+        "Width": 10
+    },
+    "Links": [
+        {
+            "Room Two": {
+                "Y Position": 2,
+                "Exit Blocked": true,
+                "X Position": 4,
+                "Direction": 5
+            },
+            "Room One": {
+                "Y Position": 5,
+                "Exit Blocked": true,
+                "X Position": 7,
+                "Direction": 1
+            }
+        },
+        {
+            "Room Two": {
+                "Y Position": 4,
+                "Exit Blocked": true,
+                "X Position": 2,
+                "Direction": 3
+            },
+            "Room One": {
+                "Y Position": 2,
+                "Exit Blocked": true,
+                "X Position": 4,
+                "Direction": 7
+            }
+        },
+        {
+            "Room Two": {
+                "Y Position": 7,
+                "Exit Blocked": true,
+                "X Position": 5,
+                "Direction": 1
+            },
+            "Room One": {
+                "Y Position": 4,
+                "Exit Blocked": true,
+                "X Position": 2,
+                "Direction": 5
+            }
+        },
+        {
+            "Room Two": {
+                "Y Position": 5,
+                "Exit Blocked": true,
+                "X Position": 7,
+                "Direction": 7
+            },
+            "Room One": {
+                "Y Position": 7,
+                "Exit Blocked": true,
+                "X Position": 5,
+                "Direction": 3
+            }
+        },
+        {
+            "Room Two": {
+                "Y Position": 4,
+                "Exit Blocked": true,
+                "X Position": 2,
+                "Direction": 4
+            },
+            "Room One": {
+                "Y Position": 5,
+                "Exit Blocked": true,
+                "X Position": 7,
+                "Direction": 8
+            }
+        },
+        {
+            "Room Two": {
+                "Y Position": 2,
+                "Exit Blocked": true,
+                "X Position": 4,
+                "Direction": 6
+            },
+            "Room One": {
+                "Y Position": 7,
+                "Exit Blocked": true,
+                "X Position": 5,
+                "Direction": 2
+            }
+        }
+    ],
+    "Name": "New Map",
+    "Rooms": [
+        {
+            "Y Position": 2,
+            "Description": "",
+            "Color": "0x000000ff",
+            "X Position": 4,
+            "Attributes": [],
+            "Flag": "#ROOM"
+        },
+        {
+            "Y Position": 4,
+            "Description": "",
+            "Color": "0x000000ff",
+            "X Position": 2,
+            "Attributes": [],
+            "Flag": "#ROOM"
+        },
+        {
+            "Y Position": 7,
+            "Description": "",
+            "Color": "0x000000ff",
+            "X Position": 5,
+            "Attributes": [],
+            "Flag": "#ROOM"
+        },
+        {
+            "Y Position": 5,
+            "Description": "",
+            "Color": "0x000000ff",
+            "X Position": 7,
+            "Attributes": [],
+            "Flag": "#ROOM"
+        }
+    ]
+}

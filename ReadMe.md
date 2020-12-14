@@ -6,21 +6,29 @@ IDE: JDeveloper
 ## Credits
 Team members 
 * Project Manager: Joseph Graham
-* Dara Lewis
-* Quality Control: Jared Pond
-* Sydney Rowell
-* Daniel Tanner Lyons
+* Dara Lewis: Quality Control
+* Lead Developer: Daniel Tanner Lyons
+* Developers: Sydney Rowell, Joseph Graham, Dara Lewis
 
 ## Features
 
-* None
+* Add and delete rooms from the map
 
-## Latest Changes
+* Link one room to another​ room
 
-* Fixed all the branches
-* Updated the readme
-* Added a concept image of what the final product could look like to the readme
+* Improved UI with intuitive mouse-centered control
 
-## Concept image
+* Save and load map files as JSON Objects
 
-[![Concept-Adv-Java-class.png](https://i.postimg.cc/Zqw5xcH7/Concept-Adv-Java-class.png)](https://postimg.cc/v16yQ5pf)
+* Assign text-based attributes to a room
+
+* Assign a flag to each room
+
+* Description field for detailed notes
+
+
+## Pictures
+
+![project1](https://raw.githubusercontent.com/Joseph-Graham/mapmaker/dev/doc/mapmaker1.PNG)
+
+![project2](https://raw.githubusercontent.com/Joseph-Graham/mapmaker/dev/doc/mapmaker2.PNG)
