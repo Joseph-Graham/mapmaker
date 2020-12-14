@@ -13,17 +13,11 @@ Team members
 ## Features
 
 * Add and delete rooms from the map
-
-* Link one room to another​ room
-
+* Link one room to another room
 * Improved UI with intuitive mouse-centered control
-
 * Save and load map files as JSON Objects
-
 * Assign text-based attributes to a room
-
 * Assign a flag to each room
-
 * Description field for detailed notes
 
 
